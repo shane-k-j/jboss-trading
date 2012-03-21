@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>com.jboss.trading</groupId>
+        <artifactId>trading-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../trading-parent/pom.xml</relativePath>
+    </parent>
+
+    <groupId>com.jboss.trading</groupId>
+    <artifactId>trading-test-config</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    
+    <name>JBoss Trading Test Config</name>
+    
+    <properties>
+        <cancel.limit.order.error.msg.prefix>Limit Order Not Found, Id: %s</cancel.limit.order.error.msg.prefix>
+        <cancel.market.order.error.msg.prefix>Market Order Not Found, Id: %s</cancel.market.order.error.msg.prefix>
+        <initial.limit.order.id>1</initial.limit.order.id>
+        <initial.market.order.id>1</initial.market.order.id>
+        <max.limit.order.results>100</max.limit.order.results>
+        <max.market.order.results>100</max.market.order.results>
+        <price>50</price>
+        <quantity>100</quantity>
+        <stock.holder.id>0</stock.holder.id>
+        <stock.symbol>RHT</stock.symbol>
+    </properties>
+    
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.properties</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>

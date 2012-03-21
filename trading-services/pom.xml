@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>com.jboss.trading</groupId>
+        <artifactId>trading-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../trading-parent/pom.xml</relativePath>
+    </parent>
+    
+    <groupId>com.jboss.trading</groupId>
+    <artifactId>trading-services</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>ejb</packaging>
+
+    <name>JBoss Trading Services</name>
+    
+    <properties>
+        <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-beanutils</groupId>
+            <artifactId>commons-beanutils</artifactId>
+            <version>${commons-beanutils.version}</version>
+        </dependency>
+        <!-- provided -->
+        <!-- org.jboss.ejb.annotation -->
+        <dependency>
+            <groupId>org.jboss.ejb3</groupId>
+            <artifactId>jboss-ejb3-ext-api</artifactId>
+            <version>${jboss-ejb3-ext-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- javax.ejb -->
+        <dependency>
+            <groupId>org.jboss.javaee</groupId>
+            <artifactId>jboss-ejb-api</artifactId>
+            <version>${jboss-ejb-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- javax.jms -->
+        <dependency>
+            <groupId>org.jboss.javaee</groupId>
+            <artifactId>jboss-jms-api</artifactId>
+            <version>${jboss-jms-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- 2nd level caching -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-annotations</artifactId>
+            <version>${hibernate-annotations}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <!-- jta 1.0.1.GA is a dependency of jboss-ejb-api -->
+                <exclusion>
+                    <groupId>javax.transaction</groupId>
+                    <artifactId>jta</artifactId>
+                </exclusion>
+                <!-- xml-apis 2.9.1 is a dependency of jboss-ejb3-ext-api -->
+                <exclusion>
+                    <groupId>xml-apis</groupId>
+                    <artifactId>xml-apis</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <!-- test -->
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-test</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-test-config</artifactId>
+            <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian</groupId>
+            <artifactId>arquillian-junit</artifactId>
+            <version>${arquillian.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ejb-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <ejbVersion>3.0</ejbVersion>
+                    <generateClient>true</generateClient>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+    
+    <profiles>
+        <profile>
+            <id>localhost-remote</id>
+            <properties>
+                <hibernate.hbm2ddl.auto>create-drop</hibernate.hbm2ddl.auto>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.jboss.arquillian.container</groupId>
+                    <artifactId>arquillian-jbossas-remote-5.1</artifactId>
+                    <version>${arquillian.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.jbossas</groupId>
+                    <artifactId>jboss-as-client</artifactId>
+                    <version>${jboss-as-client.version}</version>
+                    <type>pom</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.jbossas</groupId>
+                    <artifactId>jboss-as-profileservice-client</artifactId>
+                    <version>${jboss-as-profileservice-client.version}</version>
+                    <type>pom</type>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>2.11</version>
+                        <executions>
+                            <execution>
+                                <id>integration-test</id>
+                                <phase>integration-test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                                <configuration>
+                                    <excludes>
+                                        <exclude>none</exclude>
+                                    </excludes>
+                                    <includes>
+                                        <include>**/*IT.java</include>
+                                    </includes>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <groupId>com.jboss.trading</groupId>
+        <artifactId>trading-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../trading-parent/pom.xml</relativePath>
+    </parent>
+    
+    <groupId>com.jboss.trading</groupId>
+    <artifactId>trading-app</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>ear</packaging>
+
+    <name>JBoss Trading App</name>
+
+    <dependencies>
+        <!-- ejb/war -->
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-rest</artifactId>
+            <version>${project.version}</version>
+            <type>war</type>
+        </dependency>
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-services</artifactId>
+            <version>${project.version}</version>
+            <type>ejb</type>
+        </dependency>
+        <!-- libs -->
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-resteasy-jaxrs</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <!-- resteasy libs -->
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>${resteasy.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scannotation</groupId>
+            <artifactId>scannotation</artifactId>
+            <version>${scannotation.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.6</version>
+                <configuration>
+                    <defaultLibBundleDir>lib/</defaultLibBundleDir>
+                    <jboss>
+                        <version>5</version>
+                    </jboss>
+                </configuration>
+                <goals>generate-application-xml</goals>
+            </plugin>
+        </plugins>
+    </build>
+</project>
