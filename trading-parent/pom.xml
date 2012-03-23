@@ -12,7 +12,8 @@
     <name>JBoss Trading Parent</name>
 
     <properties>
-        <arquillian.version>1.0.0.Alpha5</arquillian.version>
+        <arquillian-core.version>1.0.0.CR7</arquillian-core.version>
+        <arquillian-jbossas.version>1.0.0.CR3</arquillian-jbossas.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <cxf.version>2.5.1</cxf.version>
         <hibernate-annotations>3.4.0.GA</hibernate-annotations>

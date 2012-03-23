@@ -11,7 +11,7 @@ import com.jboss.trading.test.TestConfig;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.ejb.EJB;
-import org.jboss.arquillian.api.Deployment;
+import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
 import org.jboss.shrinkwrap.api.spec.JavaArchive;
