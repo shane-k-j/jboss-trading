@@ -1,1 +1,15 @@
 /trading-services/target/
+/trading-ejb-client/target/
+/trading-api/target/
+/trading-rest/target/
+/trading-test/target/
+/trading-test-config/target/
+/trading-resteasy-jaxrs/target/
+/trading-app/target/
+/trading-ejb-client-test-config/target/
+/trading-rest-client-test-config/target/
+/trading-rest-client/target/
+/trading-ws-client-test-config/target/
+/trading-ws-client/target/
+/trading-client-test-dist/target/
+/trading-client-test-perf/target/
