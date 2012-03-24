@@ -1,6 +1,7 @@
 /trading-api/target/
 /trading-app/target/
 /trading-client-test-dist/target/
+/trading-client-test-perf/root.log
 /trading-client-test-perf/jmeter/
 /trading-client-test-perf/target/
 /trading-ejb-client/target/
