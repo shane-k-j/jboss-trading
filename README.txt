@@ -1,13 +1,12 @@
-This code was written to be deployed against a JBoss EAP 5.1.2 server.
+Install JBoss EAP 5.1.2 and enable the 'admin' user in the 'jmx-console' 
+domain by uncommenting it out in the jmx-console-user.properties file.
 
-As such, you will need to modify the jmx-console-users.properties file to 
-uncomment out the admin user.
+Start the server in the all or production profile. The server should be 
+reachable at localhost on port 8080.
 
-Integration tests can be run from the root project using the localhost-remote
-profile when the server is running and reachable via localhost on port 8080.
+run.sh -c all
 
-e.g. - mvn clean install -P localhost-remote
+Execute the performance tests by running Maven with the 'localhost-remote' 
+profile.
 
-The server needs to be running the all or production profile.
-
-e.g. - ./run.sh -c all
+mvn clean install -Plocalhost-remote

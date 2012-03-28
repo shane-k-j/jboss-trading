@@ -9,7 +9,7 @@ public class ClientTestConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ClientTestConfig.class);
     
-    private static final String PROPS_FILE_NAME = "rmi-client-test.properties";
+    private static final String PROPS_FILE_NAME = "ejb-client-test.properties";
     private static final String PROPS_HOST_PORT = "host.port";
     private static final String PROPS_JNDI_NAME = "jndi.name";
     
