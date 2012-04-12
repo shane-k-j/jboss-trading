@@ -69,7 +69,9 @@
                         <version>5</version>
                     </jboss>
                 </configuration>
-                <goals>generate-application-xml</goals>
+                <goals>
+                    <goal>generate-application-xml</goal>
+                </goals>
             </plugin>
         </plugins>
     </build>
