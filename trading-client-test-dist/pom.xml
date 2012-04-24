@@ -11,9 +11,7 @@
         <relativePath>../trading-parent/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.jboss.trading</groupId>
     <artifactId>trading-client-test-dist</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <name>JBoss Trading Client Test Distribution</name>

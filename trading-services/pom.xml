@@ -11,9 +11,7 @@
         <relativePath>../trading-parent/pom.xml</relativePath>
     </parent>
     
-    <groupId>com.jboss.trading</groupId>
     <artifactId>trading-services</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>ejb</packaging>
 
     <name>JBoss Trading Services</name>

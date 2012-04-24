@@ -11,9 +11,7 @@
         <relativePath>../trading-parent/pom.xml</relativePath>
     </parent>
 
-    <groupId>com.jboss.trading</groupId>
     <artifactId>trading-rest-client</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     
     <name>JBoss Trading REST Client</name>

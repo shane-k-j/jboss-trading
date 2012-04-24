@@ -11,9 +11,7 @@
         <relativePath>../trading-parent/pom.xml</relativePath>
     </parent>
     
-    <groupId>com.jboss.trading</groupId>
     <artifactId>trading-rest</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     
     <name>JBoss Trading REST</name>
