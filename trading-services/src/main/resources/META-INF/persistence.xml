@@ -1,17 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-  <persistence-unit name="trading" transaction-type="JTA">
-    <jta-data-source>java:/DefaultDS</jta-data-source>
-    <class>com.jboss.trading.services.persistence.StockEntity</class>
-    <class>com.jboss.trading.services.persistence.LimitOrderEntity</class>
-    <class>com.jboss.trading.services.persistence.MarketOrderEntity</class>
-    <properties>
-      <property name="hibernate.hbm2ddl.auto" value="${hibernate.hbm2ddl.auto}"/>
-      <property name="hibernate.cache.use_second_level_cache" value="true"/>
-      <property name="hibernate.cache.use_query_cache" value="true"/>
-      <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.jbc2.JndiMultiplexedJBossCacheRegionFactory"/>
-      <property name="hibernate.cache.region.jbc2.cachefactory" value="java:CacheManager"/>
-      <property name="hibernate.cache.region.jbc2.cfg.query" value="local-query"/>
-    </properties>
-  </persistence-unit>
+<persistence version="2.0" 
+        xmlns="http://java.sun.com/xml/ns/persistence" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:schemaLocation="
+                http://java.sun.com/xml/ns/persistence 
+                http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+    <persistence-unit name="trading" transaction-type="JTA">
+        <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+        <class>com.jboss.trading.services.persistence.LimitOrderEntity</class>
+        <class>com.jboss.trading.services.persistence.MarketOrderEntity</class>
+        <class>com.jboss.trading.services.persistence.StockEntity</class>
+        <class>com.jboss.trading.services.persistence.StockHolderEntity</class>
+        <properties>
+            <property name="hibernate.hbm2ddl.auto" 
+                      value="${hibernate.hbm2ddl.auto}" />
+            <property name="hibernate.cache.use_second_level_cache" 
+                      value="true" />
+            <property name="hibernate.cache.use_query_cache" 
+                      value="true" />
+            <!-- 
+            <property name="hibernate.cache.region.factory_class" 
+                      value="org.hibernate.cache.infinispan.JndiInfinispanRegionFactory" />
+            <property name="hibernate.cache.infinispan.cachemanager" 
+                      value="java:CacheManager" />
+            <property name="hibernate.transaction.factory_class" 
+                      value="org.hibernate.transaction.CMTTransactionFactory" />
+            <property name="hibernate.transaction.manager_lookup_class" 
+                      value="org.hibernate.transaction.JBossTransactionManagerLookup" />
+            -->
+        </properties>
+    </persistence-unit>
 </persistence>

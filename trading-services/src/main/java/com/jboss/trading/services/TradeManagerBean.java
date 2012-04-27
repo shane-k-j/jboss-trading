@@ -23,13 +23,11 @@ import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import org.jboss.wsf.spi.annotation.WebContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Stateless
 @WebService
-@WebContext(contextRoot = "/trading")
 public class TradeManagerBean implements TradeManagerLocal, TradeManagerRemote {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TradeManagerBean.class);
@@ -45,14 +43,14 @@ public class TradeManagerBean implements TradeManagerLocal, TradeManagerRemote {
     @PersistenceContext
     private EntityManager entityManager;
     
-    @Resource(mappedName = "queue/jbossTradingLimitOrders")
+    @Resource(mappedName = "java:/queue/jbossTradingLimitOrders")
     Queue limitOrderDest;
     
-    @Resource(mappedName = "ConnectionFactory")
+    @Resource(mappedName = "java:/ConnectionFactory")
     QueueConnectionFactory connectionFactory;
     
     Connection connection;
-
+    
     @Override
     public void cancelLimitOrder(Integer limitOrderId) throws LimitOrderNotFoundException {
 

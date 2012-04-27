@@ -15,15 +15,6 @@
     <packaging>jar</packaging>
     
     <name>JBoss Trading API</name>
-
-    <dependencies>
-        <!-- javax.ws.rs -->
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>jaxrs-api</artifactId>
-            <version>${resteasy.version}</version>
-        </dependency>
-    </dependencies>
     
     <build>
         <finalName>${project.artifactId}</finalName>

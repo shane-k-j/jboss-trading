@@ -1,4 +1,11 @@
+/.project
+/.settings
+/trading-api/.classpath
+/trading-api/.project
+/trading-api/.settings
 /trading-api/target/
+/trading-app/.project
+/trading-app/.settings
 /trading-app/target/
 /trading-client-test-dist/target/
 /trading-client-test-perf/root.log
@@ -6,6 +13,9 @@
 /trading-client-test-perf/target/
 /trading-ejb-client/target/
 /trading-ejb-client-test-config/target/
+/trading-rest/.classpath
+/trading-rest/.project
+/trading-rest/.settings
 /trading-rest/target/
 /trading-rest-client/target/
 /trading-rest-client-test-config/target/
@@ -15,4 +25,3 @@
 /trading-test-config/target/
 /trading-ws-client/target/
 /trading-ws-client-test-config/target/
-
