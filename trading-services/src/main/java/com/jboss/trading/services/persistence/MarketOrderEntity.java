@@ -5,12 +5,10 @@ import com.jboss.trading.api.model.TransactionType;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "tbl_market_orders")
-@Cache(usage = CacheConcurrencyStrategy.TRANSACTIONAL)
+@Cacheable
 public class MarketOrderEntity implements Serializable {
 
     @Id

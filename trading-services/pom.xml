@@ -51,12 +51,23 @@
             <version>1.0-SP4</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate.javax.persistence</groupId>
+            <artifactId>hibernate-jpa-2.0-api</artifactId>
+            <version>1.0.1.Final</version>
+         </dependency>
         <!-- org.jboss.ejb.annotation -->
         <dependency>
             <groupId>org.jboss.ejb3</groupId>
             <artifactId>jboss-ejb3-ext-api</artifactId>
             <version>${jboss-ejb3-ext-api.version}</version>
             <scope>provided</scope>
+            <exclusions>
+            	<exclusion>
+            		<artifactId>ejb3-persistence</artifactId>
+            		<groupId>org.hibernate</groupId>
+            	</exclusion>
+            </exclusions>
         </dependency>
         <!-- javax.ejb -->
         <dependency>
@@ -71,25 +82,6 @@
             <artifactId>jboss-jms-api</artifactId>
             <version>${jboss-jms-api.version}</version>
             <scope>provided</scope>
-        </dependency>
-        <!-- 2nd level caching -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-annotations</artifactId>
-            <version>${hibernate-annotations}</version>
-            <scope>provided</scope>
-            <exclusions>
-                <!-- jta 1.0.1.GA is a dependency of jboss-ejb-api -->
-                <exclusion>
-                    <groupId>javax.transaction</groupId>
-                    <artifactId>jta</artifactId>
-                </exclusion>
-                <!-- xml-apis 2.9.1 is a dependency of jboss-ejb3-ext-api -->
-                <exclusion>
-                    <groupId>xml-apis</groupId>
-                    <artifactId>xml-apis</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- test -->
         <dependency>
