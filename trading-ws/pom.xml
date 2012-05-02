@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" 
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+                             http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
     <parent>
@@ -10,23 +11,14 @@
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../trading-parent/pom.xml</relativePath>
     </parent>
-    
-    <artifactId>trading-rest</artifactId>
-    <packaging>war</packaging>
-    
-    <name>JBoss Trading REST</name>
 
+    <artifactId>trading-ws</artifactId>
+    <packaging>jar</packaging>
+    
+    <name>JBoss Trading Web Services</name>
+    
     <build>
         <finalName>${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
-                <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
-                </configuration>
-            </plugin>
-        </plugins>
     </build>
     
     <dependencies>
@@ -36,23 +28,11 @@
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-ws</artifactId>
-            <version>${project.version}</version>
-        </dependency>
         <!-- CDI -->
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
             <version>1.0-SP4</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- JAX-RS -->
-        <dependency>
-            <groupId>org.jboss.spec.javax.ws.rs</groupId>
-            <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
-            <version>1.0.1.Final</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

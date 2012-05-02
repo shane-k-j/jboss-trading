@@ -12,14 +12,14 @@ public interface TradeManager {
 
     void placeLimitOrder(Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol, Float price) 
-    		throws PlaceOrderException;
+            throws PlaceOrderException;
 
     void placeMarketOrder(Integer stockHolderId, 
-    		TransactionType transactionType, Integer quantity, 
-    		String stockSymbol);
+            TransactionType transactionType, Integer quantity, 
+            String stockSymbol);
 
     void cancelLimitOrder(Integer limitOrderId) 
-    		throws LimitOrderNotFoundException;
+            throws LimitOrderNotFoundException;
 
     void cancelMarketOrder(Integer marketOrderId)
             throws MarketOrderNotFoundException;
@@ -31,8 +31,8 @@ public interface TradeManager {
             throws MarketOrderNotFoundException;
 
     List<LimitOrder> viewStockHolderLimitOrders(Integer stockHolderId, 
-    		Integer numberLimitOrders);
+            Integer numberLimitOrders);
 
     List<MarketOrder> viewStockHolderMarketOrders(Integer stockHolderId, 
-    		Integer numberMarketOrders);
+            Integer numberMarketOrders);
 }

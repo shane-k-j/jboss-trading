@@ -50,6 +50,10 @@
 /trading-test/.settings/
 /trading-test/target/
 /trading-test-config/target/
+/trading-ws/.classpath
+/trading-ws/.project
+/trading-ws/.settings/
+/trading-ws/target/
 /trading-ws-client/.classpath
 /trading-ws-client/.project
 /trading-ws-client/.settings/

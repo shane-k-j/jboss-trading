@@ -19,7 +19,6 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.ejb.Stateless;
 import javax.jms.*;
-import javax.jws.WebService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -27,7 +26,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Stateless
-@WebService
 public class TradeManagerBean implements TradeManagerLocal, TradeManagerRemote {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TradeManagerBean.class);

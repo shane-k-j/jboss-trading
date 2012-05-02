@@ -20,26 +20,26 @@ import javax.ws.rs.Produces;
 
 @Path("/services")
 public class TradingServices {
-	
-	@Inject 
-	@Named("TradeManagerBean")
+    
+    @Inject 
+    @Named("TradeManagerBean")
     TradeManager tradeManager;
-	
-	@DELETE
+    
+    @DELETE
     @Path("/orders/limit/{limitOrderId}")
     @Produces("application/json")
     public void cancelLimitOrder(
-    		@PathParam("limitOrderId") Integer limitOrderId)
+            @PathParam("limitOrderId") Integer limitOrderId)
             throws LimitOrderNotFoundException {
 
         tradeManager.cancelLimitOrder(limitOrderId);
     }
 
-	@DELETE
+    @DELETE
     @Path("/orders/market/{marketOrderId}")
     @Produces("application/json")
     public void cancelMarketOrder(
-    		@PathParam("marketOrderId") Integer marketOrderId)
+            @PathParam("marketOrderId") Integer marketOrderId)
             throws MarketOrderNotFoundException {
 
         tradeManager.cancelMarketOrder(marketOrderId);
@@ -54,11 +54,11 @@ public class TradingServices {
             @FormParam("quantity") Integer quantity,
             @FormParam("stockSymbol") String stockSymbol,
             @FormParam("price") Float price) 
-    		throws PlaceOrderException {
+            throws PlaceOrderException {
 
         tradeManager.placeLimitOrder(
-        		stockHolderId, transactionType, quantity, 
-        		stockSymbol, price);
+                stockHolderId, transactionType, quantity, 
+                stockSymbol, price);
     }
 
     @POST
@@ -71,15 +71,15 @@ public class TradingServices {
             @FormParam("stockSymbol") String stockSymbol) {
 
         tradeManager.placeMarketOrder(
-        		stockHolderId, transactionType, quantity,
-        		stockSymbol);
+                stockHolderId, transactionType, quantity,
+                stockSymbol);
     }
 
     @GET
     @Path("/orders/limit/{limitOrderId}")
     @Produces("application/json")
     public LimitOrder viewLimitOrder(
-    		@PathParam("limitOrderId") Integer limitOrderId)
+            @PathParam("limitOrderId") Integer limitOrderId)
             throws LimitOrderNotFoundException {
 
         return tradeManager.viewLimitOrder(limitOrderId);
@@ -89,7 +89,7 @@ public class TradingServices {
     @Path("/orders/market/{marketOrderId}")
     @Produces("application/json")
     public MarketOrder viewMarketOrder(
-    		@PathParam("marketOrderId") Integer marketOrderId)
+            @PathParam("marketOrderId") Integer marketOrderId)
             throws MarketOrderNotFoundException {
 
         return tradeManager.viewMarketOrder(marketOrderId);
@@ -101,9 +101,9 @@ public class TradingServices {
     public List<LimitOrder> viewStockHolderLimitOrders(
             @PathParam("stockHolderId") Integer stockHolderId,
             @PathParam("numberLimitOrders") Integer numberLimitOrders) {
-    	
+        
         return tradeManager.viewStockHolderLimitOrders(
-        		stockHolderId, numberLimitOrders);
+                stockHolderId, numberLimitOrders);
     }
 
     @GET
@@ -114,6 +114,6 @@ public class TradingServices {
             @PathParam("numberLimitOrders") Integer numberMarketOrders) {
 
         return tradeManager.viewStockHolderMarketOrders(
-        		stockHolderId, numberMarketOrders);
+                stockHolderId, numberMarketOrders);
     }
 }

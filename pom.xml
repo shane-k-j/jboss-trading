@@ -26,6 +26,7 @@
         <module>trading-services</module>
         <module>trading-test</module>
         <module>trading-test-config</module>
+        <module>trading-ws</module>
         <module>trading-ws-client</module>
         <module>trading-ws-client-test-config</module>      
     </modules>

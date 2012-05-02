@@ -8,14 +8,14 @@ import com.jboss.trading.services.TradeManagerLocal;
 import javax.inject.Named;
 
 public class Resources {
-	
-	@EJB
-	TradeManagerLocal tradeManager;
-	
-	@Produces
-	@Named("TradeManagerBean")
-	public TradeManager getTradeManager() {
-		
-		return tradeManager;
-	}
+    
+    @EJB
+    TradeManagerLocal tradeManager;
+    
+    @Produces
+    @Named("TradeManagerBean")
+    public TradeManager getTradeManager() {
+        
+        return tradeManager;
+    }
 }
