@@ -11,13 +11,23 @@
         <relativePath>../trading-parent/pom.xml</relativePath>
     </parent>
     
-    <artifactId>trading-rest</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>trading-web</artifactId>
+    <packaging>war</packaging>
     
-    <name>JBoss Trading REST</name>
+    <name>JBoss Trading Web</name>
 
     <build>
         <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.1.1</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputFileNameMapping>@{artifactId}@.@{extension}@</outputFileNameMapping>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
     
     <dependencies>
@@ -27,19 +37,15 @@
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- CDI -->
         <dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>1.0-SP4</version>
-            <scope>provided</scope>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-rest</artifactId>
+            <version>${project.version}</version>
         </dependency>
-        <!-- JAX-RS -->
         <dependency>
-            <groupId>org.jboss.spec.javax.ws.rs</groupId>
-            <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
-            <version>1.0.1.Final</version>
-            <scope>provided</scope>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-ws</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

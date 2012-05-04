@@ -11,10 +11,10 @@
         <relativePath>../trading-parent/pom.xml</relativePath>
     </parent>
     
-    <artifactId>trading-services</artifactId>
+    <artifactId>trading-beans</artifactId>
     <packaging>ejb</packaging>
 
-    <name>JBoss Trading Services</name>
+    <name>JBoss Trading Beans</name>
     
     <properties>
         <hibernate.hbm2ddl.auto>validate</hibernate.hbm2ddl.auto>
@@ -55,6 +55,7 @@
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <version>1.0.1.Final</version>
+            <scope>provided</scope>
          </dependency>
         <!-- org.jboss.ejb.annotation -->
         <dependency>

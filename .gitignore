@@ -7,6 +7,10 @@
 /trading-app/.project
 /trading-app/.settings/
 /trading-app/target/
+/trading-beans/.classpath
+/trading-beans/.project
+/trading-beans/.settings/
+/trading-beans/target/
 /trading-client-test-dist/.project
 /trading-client-test-dist/.settings/
 /trading-client-test-dist/target/
@@ -37,14 +41,6 @@
 /trading-rest-client-test-config/.project
 /trading-rest-client-test-config/.settings/
 /trading-rest-client-test-config/target/
-/trading-resteasy-jaxrs/.classpath
-/trading-resteasy-jaxrs/.project
-/trading-resteasy-jaxrs/.settings/
-/trading-resteasy-jaxrs/target/
-/trading-services/.classpath
-/trading-services/.project
-/trading-services/.settings/
-/trading-services/target/
 /trading-test/.classpath
 /trading-test/.project
 /trading-test/.settings/
@@ -55,6 +51,10 @@
 /trading-test/.settings/
 /trading-test/target/
 /trading-test-config/target/
+/trading-web/.classpath
+/trading-web/.project
+/trading-web/.settings/
+/trading-web/target/
 /trading-ws/.classpath
 /trading-ws/.project
 /trading-ws/.settings/

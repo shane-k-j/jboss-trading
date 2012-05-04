@@ -16,16 +16,16 @@
         <module>trading-app</module>
         <module>trading-client-test-dist</module>
         <module>trading-client-test-perf</module>
+        <module>trading-beans</module>
         <module>trading-ejb-client</module>
         <module>trading-ejb-client-test-config</module>
         <module>trading-parent</module>
         <module>trading-rest</module>
         <module>trading-rest-client</module>
         <module>trading-rest-client-test-config</module>
-        <module>trading-resteasy-jaxrs</module>
-        <module>trading-services</module>
         <module>trading-test</module>
         <module>trading-test-config</module>
+        <module>trading-web</module>
         <module>trading-ws</module>
         <module>trading-ws-client</module>
         <module>trading-ws-client-test-config</module>      

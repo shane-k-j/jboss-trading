@@ -20,15 +20,15 @@
         <!-- ejb/war -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-rest</artifactId>
+            <artifactId>trading-beans</artifactId>
             <version>${project.version}</version>
-            <type>war</type>
+            <type>ejb</type>
         </dependency>
         <dependency>
             <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-services</artifactId>
+            <artifactId>trading-web</artifactId>
             <version>${project.version}</version>
-            <type>ejb</type>
+            <type>war</type>
         </dependency>
     </dependencies>
 
