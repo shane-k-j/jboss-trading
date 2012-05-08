@@ -12,8 +12,10 @@ import javax.persistence.*;
 public class MarketOrderEntity implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_market_orders")
-    @SequenceGenerator(name = "sequence_market_orders", sequenceName = "sequence_market_orders")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, 
+    		generator = "sequence_market_orders")
+    @SequenceGenerator(name = "sequence_market_orders", 
+    		sequenceName = "sequence_market_orders")
     private Integer id;
     
     @Column(name = "fk_stock_holder_id")

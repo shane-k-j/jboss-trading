@@ -29,7 +29,8 @@ public class TradeManagerClient implements TradeManager {
         ResteasyProviderFactory providerFactory = 
         		ResteasyProviderFactory.getInstance();
 
-        providerFactory.addMessageBodyReader(ResteasyJacksonProvider.class);
+        providerFactory.addMessageBodyReader(
+        		ResteasyJacksonProvider.class);
 
         RegisterBuiltin.register(providerFactory);
     }
