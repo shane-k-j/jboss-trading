@@ -17,8 +17,9 @@
     <name>JBoss Trading EJB Client Test Config</name>
     
     <properties>
-        <host.port>localhost:1099</host.port>
-        <jndi.name>trading-app/TradeManagerBean/remote</jndi.name>
+        <host>localhost</host>
+        <port>4447</port>
+        <jndi.name>ejb:trading-app/trading-beans//TradeManagerBean!com.jboss.trading.services.TradeManagerRemote</jndi.name>
     </properties>
     
     <build>

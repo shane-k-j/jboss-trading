@@ -9,18 +9,14 @@ import com.jboss.trading.api.model.MarketOrder;
 import com.jboss.trading.api.model.TransactionType;
 import java.util.List;
 import java.util.Properties;
+
+import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
 public class TradeManagerClient implements TradeManager {
 
-    private static final String PROP_INITIAL = "java.naming.factory.initial";
-    private static final String PROP_PKGS = "java.naming.factory.url.pkgs";
-    private static final String PROP_URL = "java.naming.provider.url";
-    
-    private static final String PROP_INITIAL_VALUE = "org.jnp.interfaces.NamingContextFactory";
-    private static final String PROP_PKGS_VALUE = "org.jboss.naming:org.jnp.interfaces";
-    private static final String PROP_URL_VALUE_PREFIX = "jnp://";
+    private static final String PROP_PKGS_VALUE = "org.jboss.ejb.client.naming";
     
     private TradeManager tradeManager;
 
@@ -29,13 +25,11 @@ public class TradeManagerClient implements TradeManager {
         this.tradeManager = tradeManager;
     }
 
-    public static TradeManager getInstance(String hostPort, String jndiName) throws NamingException {
+    public static TradeManager getInstance(String jndiName) throws NamingException {
 
         Properties properties = new Properties();
 
-        properties.put(PROP_INITIAL, PROP_INITIAL_VALUE);
-        properties.put(PROP_PKGS, PROP_PKGS_VALUE);
-        properties.put(PROP_URL, PROP_URL_VALUE_PREFIX + hostPort);
+        properties.put(Context.URL_PKG_PREFIXES, PROP_PKGS_VALUE);
 
         InitialContext ctx = new InitialContext(properties);
 

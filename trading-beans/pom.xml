@@ -56,19 +56,6 @@
             <artifactId>hibernate-jpa-2.0-api</artifactId>
             <version>1.0.1.Final</version>
             <scope>provided</scope>
-         </dependency>
-        <!-- org.jboss.ejb.annotation -->
-        <dependency>
-            <groupId>org.jboss.ejb3</groupId>
-            <artifactId>jboss-ejb3-ext-api</artifactId>
-            <version>${jboss-ejb3-ext-api.version}</version>
-            <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <artifactId>ejb3-persistence</artifactId>
-                    <groupId>org.hibernate</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- javax.ejb -->
         <dependency>
@@ -95,6 +82,12 @@
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-test-config</artifactId>
             <version>${project.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -142,23 +135,11 @@
                 <hibernate.hbm2ddl.auto>create-drop</hibernate.hbm2ddl.auto>
             </properties>
             <dependencies>
-                <dependency>
-                    <groupId>org.jboss.arquillian.container</groupId>
-                    <artifactId>arquillian-jbossas-remote-5.1</artifactId>
-                    <version>${arquillian-jbossas.version}</version>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.jbossas</groupId>
-                    <artifactId>jboss-as-client</artifactId>
-                    <version>${jboss-as-client.version}</version>
-                    <type>pom</type>
-                </dependency>
-                <dependency>
-                    <groupId>org.jboss.jbossas</groupId>
-                    <artifactId>jboss-as-profileservice-client</artifactId>
-                    <version>${jboss-as-profileservice-client.version}</version>
-                    <type>pom</type>
-                </dependency>
+                 <dependency>
+                    <groupId>org.jboss.as</groupId>
+                    <artifactId>jboss-as-arquillian-container-remote</artifactId>
+                    <version>7.1.1.Final</version>
+                 </dependency>
             </dependencies>
             <build>
                 <plugins>

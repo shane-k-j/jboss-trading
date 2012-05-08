@@ -10,7 +10,9 @@ import com.jboss.trading.api.model.TransactionType;
 import com.jboss.trading.test.TestConfig;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import javax.ejb.EJB;
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -24,7 +26,8 @@ public class TradeManagerLocalIT {
 
     private TestConfig testConfig;
     
-    @EJB
+    @Inject 
+    @Named("TradeManagerBean")
     TradeManager tradeManager;
 
     public TradeManagerLocalIT() {
@@ -35,7 +38,23 @@ public class TradeManagerLocalIT {
     @Deployment
     public static JavaArchive createTestArchive() {
 
-        return ShrinkWrap.create(JavaArchive.class, "trading-services.jar").addPackage("com.jboss.trading.api").addPackage("com.jboss.trading.api.exception").addPackage("com.jboss.trading.api.model").addPackage("com.jboss.trading.services").addPackage("com.jboss.trading.services.persistence").addPackage("com.jboss.trading.services.persistence.factory").addPackage("com.jboss.trading.test").addPackage("org.apache.commons.beanutils").addPackage("org.apache.commons.beanutils.converters").addPackage("org.apache.commons.beanutils.expression").addPackage("org.apache.commons.lang").addPackage("org.apache.commons.lang.builder").addAsManifestResource("META-INF/persistence.xml").addAsResource("trading-queue-service.xml").addAsResource("import.sql").addAsResource("test.properties");
+        return ShrinkWrap.create(
+        		JavaArchive.class, "trading-services.jar")
+        		.addPackage("com.jboss.trading.api")
+        		.addPackage("com.jboss.trading.api.exception")
+        		.addPackage("com.jboss.trading.api.model")
+        		.addPackage("com.jboss.trading.services")
+        		.addPackage("com.jboss.trading.services.persistence")
+        		.addPackage("com.jboss.trading.services.persistence.factory")
+        		.addPackage("com.jboss.trading.services.util")
+        		.addPackage("com.jboss.trading.test")
+        		.addPackage("org.slf4j.impl")
+        		.addAsResource("META-INF/beans.xml")
+        		.addAsResource("META-INF/jboss-deployment-structure.xml")
+        		.addAsResource("META-INF/persistence.xml")
+        		.addAsResource("META-INF/trading-jms.xml")
+        		.addAsResource("import.sql")
+        		.addAsResource("test.properties");
     }
 
     @Test

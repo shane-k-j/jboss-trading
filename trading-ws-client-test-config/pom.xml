@@ -17,7 +17,7 @@
     <name>JBoss Trading WS Client Test Config</name>
     
     <properties>
-        <wsdl.url>http://localhost:8080/trading/TradeManagerBean?wsdl</wsdl.url>
+        <wsdl.url>http://localhost:8080/trading-web/TradingServices?WSDL</wsdl.url>
     </properties>
     
     <build>

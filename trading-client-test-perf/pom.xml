@@ -126,44 +126,15 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.codehaus.cargo</groupId>
-                        <artifactId>cargo-maven2-plugin</artifactId>
-                        <version>1.1.4</version>
+                        <groupId>org.jboss.as.plugins</groupId>
+                        <artifactId>jboss-as-maven-plugin</artifactId>
+                        <version>7.1.1.Final</version>
                         <configuration>
-                            <container>
-                                <containerId>jboss51x</containerId>
-                                <type>remote</type>
-                            </container>
-                            <configuration>
-                                <type>runtime</type>
-                                <properties>
-                                    <cargo.remote.username>admin</cargo.remote.username>
-                                    <cargo.remote.password>admin</cargo.remote.password>
-                                </properties>
-                            </configuration>
-                            <deployer>
-                                <deployables>
-                                    <deployable>
-                                        <type>ear</type>
-                                        <location>${project.build.directory}/dependency/trading-app.ear</location>
-                                    </deployable>
-                                </deployables>
-                            </deployer>
+                            <username>admin</username>
+                            <password>password</password>
+                            <targetDir>${project.build.directory}/dependency/</targetDir>
+                            <filename>trading-app.ear</filename>
                         </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.jboss.jbossas</groupId>
-                                <artifactId>jboss-as-client</artifactId>
-                                <version>${jboss-as-client.version}</version>
-                                <type>pom</type>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.jboss.jbossas</groupId>
-                                <artifactId>jboss-as-profileservice-client</artifactId>
-                                <version>${jboss-as-profileservice-client.version}</version>
-                                <type>pom</type>
-                            </dependency>
-                        </dependencies>
                         <executions>
                             <execution>
                                 <id>pre-integration-test</id>

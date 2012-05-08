@@ -32,12 +32,11 @@ public class TradeManagerClientIT {
 
         clientTestConfig = ClientTestConfig.getInstance();
 
-        String hostPort = clientTestConfig.getHostPort();
         String jndiName = clientTestConfig.getJndiName();
 
         try {
 
-            tradeManager = TradeManagerClient.getInstance(hostPort, jndiName);
+            tradeManager = TradeManagerClient.getInstance(jndiName);
         } 
         catch (NamingException ex) {
 

@@ -10,10 +10,8 @@ public class ClientTestConfig {
     private static final Logger LOGGER = LoggerFactory.getLogger(ClientTestConfig.class);
     
     private static final String PROPS_FILE_NAME = "ejb-client-test.properties";
-    private static final String PROPS_HOST_PORT = "host.port";
-    private static final String PROPS_JNDI_NAME = "jndi.name";
     
-    private String hostPort;
+    private static final String PROPS_JNDI_NAME = "jndi.name";
     
     private String jndiName;
 
@@ -25,7 +23,6 @@ public class ClientTestConfig {
 
             props.load(ClientTestConfig.class.getClassLoader().getResourceAsStream(PROPS_FILE_NAME));
 
-            hostPort = props.getProperty(PROPS_HOST_PORT);
             jndiName = props.getProperty(PROPS_JNDI_NAME);
         } 
         catch (IOException ex) {
@@ -36,20 +33,15 @@ public class ClientTestConfig {
 
     public static ClientTestConfig getInstance() {
 
-        return ClientTestConfig.RmiClientTestConfigHolder.INSTANCE;
+        return ClientTestConfig.EJBClientTestConfigHolder.INSTANCE;
     }
-
-    public String getHostPort() {
-        
-        return hostPort;
-    }
-
+    
     public String getJndiName() {
         
         return jndiName;
     }
 
-    private static class RmiClientTestConfigHolder {
+    private static class EJBClientTestConfigHolder {
 
         public static final ClientTestConfig INSTANCE = new ClientTestConfig();
     }

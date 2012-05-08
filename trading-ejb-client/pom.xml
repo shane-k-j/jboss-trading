@@ -16,7 +16,56 @@
     
     <name>JBoss Trading EJB Client</name>
     
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>3.0.0.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+            <dependency>
+                <groupId>org.jboss.as</groupId>
+                <artifactId>jboss-as-ejb-client-bom</artifactId>
+                <version>7.1.1.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <dependency>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-ejb-client</artifactId>
+            <scope>runtime</scope>
+        </dependency> 
+        <dependency>
+            <groupId>org.jboss.marshalling</groupId>
+            <artifactId>jboss-marshalling-river</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.sasl</groupId>
+            <artifactId>jboss-sasl</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.xnio</groupId>
+            <artifactId>xnio-nio</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.spec.javax.transaction</groupId>
+            <artifactId>jboss-transaction-api_1.1_spec</artifactId>
+            <scope>runtime</scope>
+        </dependency>
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-api</artifactId>
@@ -27,19 +76,6 @@
             <artifactId>trading-beans</artifactId>
             <version>${project.version}</version>
             <type>ejb-client</type>
-        </dependency>
-        <dependency>
-            <groupId>org.jboss.jbossas</groupId>
-            <artifactId>jboss-as-client</artifactId>
-            <version>${jboss-as-client.version}</version>
-            <type>pom</type>
-            <exclusions>
-                <!-- using slf4j-simple outside of jboss -->
-                <exclusion>
-                    <groupId>org.jboss.slf4j</groupId>
-                    <artifactId>slf4j-jboss-logging</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <!-- test -->
         <dependency>
@@ -90,16 +126,6 @@
     <profiles>
         <profile>
             <id>localhost-remote</id>
-            <dependencies>
-                <!-- required for cargo plugin -->
-                <dependency>
-                    <groupId>com.jboss.trading</groupId>
-                    <artifactId>trading-app</artifactId>
-                    <version>${project.version}</version>
-                    <scope>provided</scope>
-                    <type>ear</type>
-                </dependency>
-            </dependencies>
             <build>
                 <plugins>
                     <plugin>
@@ -150,44 +176,15 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.codehaus.cargo</groupId>
-                        <artifactId>cargo-maven2-plugin</artifactId>
-                        <version>1.1.4</version>
+                        <groupId>org.jboss.as.plugins</groupId>
+                        <artifactId>jboss-as-maven-plugin</artifactId>
+                        <version>7.1.1.Final</version>
                         <configuration>
-                            <container>
-                                <containerId>jboss51x</containerId>
-                                <type>remote</type>
-                            </container>
-                            <configuration>
-                                <type>runtime</type>
-                                <properties>
-                                    <cargo.remote.username>admin</cargo.remote.username>
-                                    <cargo.remote.password>admin</cargo.remote.password>
-                                </properties>
-                            </configuration>
-                            <deployer>
-                                <deployables>
-                                    <deployable>
-                                        <type>ear</type>
-                                        <location>${project.build.directory}/dependency/trading-app.ear</location>
-                                    </deployable>
-                                </deployables>
-                            </deployer>
+                            <username>admin</username>
+                            <password>password</password>
+                            <targetDir>${project.build.directory}/dependency/</targetDir>
+                            <filename>trading-app.ear</filename>
                         </configuration>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.jboss.jbossas</groupId>
-                                <artifactId>jboss-as-client</artifactId>
-                                <version>${jboss-as-client.version}</version>
-                                <type>pom</type>
-                            </dependency>
-                            <dependency>
-                                <groupId>org.jboss.jbossas</groupId>
-                                <artifactId>jboss-as-profileservice-client</artifactId>
-                                <version>${jboss-as-profileservice-client.version}</version>
-                                <type>pom</type>
-                            </dependency>
-                        </dependencies>
                         <executions>
                             <execution>
                                 <id>pre-integration-test</id>

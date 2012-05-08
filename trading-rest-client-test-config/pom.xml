@@ -17,7 +17,7 @@
     <name>JBoss Trading REST Client Test Config</name>
     
     <properties>
-        <base.url>http://localhost:8080/trading-rest/</base.url>
+        <base.url>http://localhost:8080/trading-web/trading</base.url>
     </properties>
     
     <build>

@@ -11,13 +11,11 @@ import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.jboss.ejb3.annotation.Depends;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @MessageDriven(activationConfig = {
     @ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/jbossTradingLimitOrders")})
-@Depends("jboss.messaging.destination:service=Queue,name=jbossTradingLimitOrders")
 public class LimitOrderProcessorBean implements MessageListener {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(LimitOrderProcessorBean.class);
