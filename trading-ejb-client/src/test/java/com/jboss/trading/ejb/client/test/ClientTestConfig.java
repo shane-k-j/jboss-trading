@@ -1,4 +1,4 @@
-package com.jboss.trading.rmi.client.test;
+package com.jboss.trading.ejb.client.test;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -8,13 +8,13 @@ import org.slf4j.LoggerFactory;
 public class ClientTestConfig {
 
     private static final Logger LOGGER = 
-    		LoggerFactory.getLogger(ClientTestConfig.class);
+            LoggerFactory.getLogger(ClientTestConfig.class);
     
     private static final String PROPS_FILE_NAME = 
-    		"ejb-client-test.properties";
+            "ejb-client-test.properties";
     
     private static final String PROPS_JNDI_NAME = 
-    		"jndi.name";
+            "jndi.name";
     
     private String jndiName;
 
@@ -25,8 +25,8 @@ public class ClientTestConfig {
         try {
 
             props.load(ClientTestConfig.class
-            		.getClassLoader()
-            		.getResourceAsStream(PROPS_FILE_NAME));
+                    .getClassLoader()
+                    .getResourceAsStream(PROPS_FILE_NAME));
 
             jndiName = props.getProperty(PROPS_JNDI_NAME);
         } 
@@ -49,6 +49,6 @@ public class ClientTestConfig {
     private static class EJBClientTestConfigHolder {
 
         public static final ClientTestConfig INSTANCE = 
-        		new ClientTestConfig();
+                new ClientTestConfig();
     }
 }

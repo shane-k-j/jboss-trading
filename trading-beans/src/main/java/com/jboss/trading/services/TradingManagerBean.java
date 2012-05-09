@@ -26,9 +26,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Stateless
-public class TradeManagerBean implements TradeManagerLocal, TradeManagerRemote {
+public class TradingManagerBean implements TradingManagerLocal, TradingManagerRemote {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TradeManagerBean.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TradingManagerBean.class);
     
     private static final String STOCK_HOLDER_LIMIT_ORDERS_QUERY_STR =
             "from LimitOrderEntity where stockHolderId = :stockHolderId order by opened desc";

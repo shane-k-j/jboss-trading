@@ -8,7 +8,7 @@ import com.jboss.trading.api.model.MarketOrder;
 import com.jboss.trading.api.model.TransactionType;
 import java.util.List;
 
-public interface TradeManager {
+public interface TradingManager {
 
     void placeLimitOrder(Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol, Float price) 

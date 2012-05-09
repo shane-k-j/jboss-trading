@@ -19,13 +19,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.jboss.spec</groupId>
-                <artifactId>jboss-javaee-6.0</artifactId>
-                <version>3.0.0.Final</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-            <dependency>
                 <groupId>org.jboss.as</groupId>
                 <artifactId>jboss-as-ejb-client-bom</artifactId>
                 <version>7.1.1.Final</version>
@@ -37,10 +30,22 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-api</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-beans</artifactId>
+            <version>${project.version}</version>
+            <type>ejb-client</type>
+        </dependency>
+        <dependency>
             <groupId>org.jboss</groupId>
             <artifactId>jboss-ejb-client</artifactId>
             <scope>runtime</scope>
         </dependency> 
+        <!-- JBoss AS EJB Client dependencies -->
         <dependency>
             <groupId>org.jboss.marshalling</groupId>
             <artifactId>jboss-marshalling-river</artifactId>
@@ -65,17 +70,6 @@
             <groupId>org.jboss.spec.javax.transaction</groupId>
             <artifactId>jboss-transaction-api_1.1_spec</artifactId>
             <scope>runtime</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-api</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-beans</artifactId>
-            <version>${project.version}</version>
-            <type>ejb-client</type>
         </dependency>
         <!-- test -->
         <dependency>

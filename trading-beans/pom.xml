@@ -25,7 +25,7 @@
             <dependency>
                 <groupId>org.jboss.arquillian</groupId>
                 <artifactId>arquillian-bom</artifactId>
-                <version>${arquillian-core.version}</version>
+                <version>${arquillian.version}</version>
                 <scope>import</scope>
                 <type>pom</type>
             </dependency>
@@ -38,37 +38,35 @@
             <artifactId>trading-api</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- provided by JBoss EAP 6 module -->
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>${commons-beanutils.version}</version>
+            <scope>provided</scope>
         </dependency>
         <!-- provided -->
         <!-- javax.enterprise.inject -->
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>1.0-SP4</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
-            <version>1.0.1.Final</version>
             <scope>provided</scope>
         </dependency>
         <!-- javax.ejb -->
         <dependency>
-            <groupId>org.jboss.javaee</groupId>
-            <artifactId>jboss-ejb-api</artifactId>
-            <version>${jboss-ejb-api.version}</version>
+            <groupId>org.jboss.spec.javax.ejb</groupId>
+            <artifactId>jboss-ejb-api_3.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- javax.jms -->
         <dependency>
-            <groupId>org.jboss.javaee</groupId>
-            <artifactId>jboss-jms-api</artifactId>
-            <version>${jboss-jms-api.version}</version>
+            <groupId>org.jboss.spec.javax.jms</groupId>
+            <artifactId>jboss-jms-api_1.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
         <!-- test -->
@@ -85,14 +83,14 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
+            <groupId>org.jboss.arquillian.junit</groupId>
+            <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -132,13 +130,13 @@
         <profile>
             <id>localhost-remote</id>
             <properties>
-                <hibernate.hbm2ddl.auto>create-drop</hibernate.hbm2ddl.auto>
+                 <hibernate.hbm2ddl.auto>create-drop</hibernate.hbm2ddl.auto>
             </properties>
             <dependencies>
                  <dependency>
-                    <groupId>org.jboss.as</groupId>
-                    <artifactId>jboss-as-arquillian-container-remote</artifactId>
-                    <version>7.1.1.Final</version>
+                     <groupId>org.jboss.as</groupId>
+                     <artifactId>jboss-as-arquillian-container-remote</artifactId>
+                     <version>${jboss-as-arq-container.version}</version>
                  </dependency>
             </dependencies>
             <build>

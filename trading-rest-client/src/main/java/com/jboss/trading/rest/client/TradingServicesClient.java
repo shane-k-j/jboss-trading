@@ -1,6 +1,6 @@
 package com.jboss.trading.rest.client;
 
-import com.jboss.trading.api.TradeManager;
+import com.jboss.trading.api.TradingManager;
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
 import com.jboss.trading.api.exception.MarketOrderNotFoundException;
 import com.jboss.trading.api.exception.PlaceOrderException;
@@ -17,52 +17,52 @@ import org.jboss.resteasy.spi.ResteasyProviderFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TradeManagerClient implements TradeManager {
+public class TradingServicesClient implements TradingManager {
 
     private static final Logger LOGGER = 
-    		LoggerFactory.getLogger(TradeManagerClient.class);
+            LoggerFactory.getLogger(TradingServicesClient.class);
     
     private TradingServices tradingServices;
 
     static {
 
         ResteasyProviderFactory providerFactory = 
-        		ResteasyProviderFactory.getInstance();
+                ResteasyProviderFactory.getInstance();
 
         providerFactory.addMessageBodyReader(
-        		ResteasyJacksonProvider.class);
+                ResteasyJacksonProvider.class);
 
         RegisterBuiltin.register(providerFactory);
     }
 
-    public TradeManagerClient(TradingServices tradingServices) {
+    public TradingServicesClient(TradingServices tradingServices) {
 
         this.tradingServices = tradingServices;
     }
 
-    public static TradeManagerClient getInstance(String baseUri) {
+    public static TradingServicesClient getInstance(String baseUri) {
 
-    	TradingServices tradingServices = 
-    			ProxyFactory.create(TradingServices.class, baseUri);
+        TradingServices tradingServices = 
+                ProxyFactory.create(TradingServices.class, baseUri);
 
-        TradeManagerClient tradeManagerClient = 
-        		new TradeManagerClient(tradingServices);
+        TradingServicesClient tradingServicesClient = 
+                new TradingServicesClient(tradingServices);
 
-        return tradeManagerClient;
+        return tradingServicesClient;
     }
 
     @Override
     public void cancelLimitOrder(Integer limitOrderId) 
-    		throws LimitOrderNotFoundException {
+            throws LimitOrderNotFoundException {
 
         try {
 
-        	tradingServices.cancelLimitOrder(limitOrderId);
+            tradingServices.cancelLimitOrder(limitOrderId);
         } 
         catch (ClientResponseFailure ex) {
 
             if (LOGGER.isDebugEnabled()) {
-            	
+                
                 LOGGER.debug(ex.getMessage(), ex);
             }
 
@@ -72,16 +72,16 @@ public class TradeManagerClient implements TradeManager {
 
     @Override
     public void cancelMarketOrder(Integer marketOrderId) 
-    		throws MarketOrderNotFoundException {
+            throws MarketOrderNotFoundException {
 
         try {
 
-        	tradingServices.cancelMarketOrder(marketOrderId);
+            tradingServices.cancelMarketOrder(marketOrderId);
         } 
         catch (ClientResponseFailure ex) {
 
             if (LOGGER.isDebugEnabled()) {
-            	
+                
                 LOGGER.debug(ex.getMessage(), ex);
             }
 
@@ -91,28 +91,28 @@ public class TradeManagerClient implements TradeManager {
 
     @Override
     public void placeLimitOrder(
-    		Integer stockHolderId, TransactionType transactionType,
+            Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol, Float price) 
             throws PlaceOrderException {
 
-    	tradingServices.placeLimitOrder(
-    			stockHolderId, transactionType, quantity, 
-    			stockSymbol, price);
+        tradingServices.placeLimitOrder(
+                stockHolderId, transactionType, quantity, 
+                stockSymbol, price);
     }
 
     @Override
     public void placeMarketOrder(
-    		Integer stockHolderId, TransactionType transactionType,
+            Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol) {
 
-    	tradingServices.placeMarketOrder(
-    			stockHolderId, transactionType, 
-    			quantity, stockSymbol);
+        tradingServices.placeMarketOrder(
+                stockHolderId, transactionType, 
+                quantity, stockSymbol);
     }
 
     @Override
     public LimitOrder viewLimitOrder(Integer limitOrderId) 
-    		throws LimitOrderNotFoundException {
+            throws LimitOrderNotFoundException {
 
         try {
 
@@ -121,7 +121,7 @@ public class TradeManagerClient implements TradeManager {
         catch (ClientResponseFailure ex) {
 
             if (LOGGER.isDebugEnabled()) {
-            	
+                
                 LOGGER.debug(ex.getMessage(), ex);
             }
 
@@ -131,7 +131,7 @@ public class TradeManagerClient implements TradeManager {
 
     @Override
     public MarketOrder viewMarketOrder(Integer marketOrderId) 
-    		throws MarketOrderNotFoundException {
+            throws MarketOrderNotFoundException {
 
         try {
 
@@ -140,7 +140,7 @@ public class TradeManagerClient implements TradeManager {
         catch (ClientResponseFailure ex) {
 
             if (LOGGER.isDebugEnabled()) {
-            	
+                
                 LOGGER.debug(ex.getMessage(), ex);
             }
 
@@ -150,17 +150,17 @@ public class TradeManagerClient implements TradeManager {
 
     @Override
     public List<LimitOrder> viewStockHolderLimitOrders(
-    		Integer stockHolderId, Integer numberLimitOrders) {
+            Integer stockHolderId, Integer numberLimitOrders) {
 
         return tradingServices.viewStockHolderLimitOrders(
-        		stockHolderId, numberLimitOrders);
+                stockHolderId, numberLimitOrders);
     }
 
     @Override
     public List<MarketOrder> viewStockHolderMarketOrders(
-    		Integer stockHolderId, Integer numberMarketOrders) {
+            Integer stockHolderId, Integer numberMarketOrders) {
 
         return tradingServices.viewStockHolderMarketOrders(
-        		stockHolderId, numberMarketOrders);
+                stockHolderId, numberMarketOrders);
     }
 }

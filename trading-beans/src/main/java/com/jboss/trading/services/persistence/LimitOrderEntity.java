@@ -13,9 +13,9 @@ public class LimitOrderEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, 
-    		generator = "sequence_limit_orders")
+            generator = "sequence_limit_orders")
     @SequenceGenerator(name = "sequence_limit_orders", 
-    		sequenceName = "sequence_limit_orders")
+            sequenceName = "sequence_limit_orders")
     private Integer id;
     
     @Column(name = "fk_stock_holder_id")

@@ -1,5 +1,6 @@
 package com.jboss.trading.rest;
 
+import com.jboss.trading.api.TradingManager;
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
 import com.jboss.trading.api.exception.MarketOrderNotFoundException;
 import com.jboss.trading.api.exception.PlaceOrderException;
@@ -16,7 +17,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 @Path("/services")
-public interface TradingServices {
+public interface TradingServices extends TradingManager {
     
     @DELETE
     @Path("/orders/limit/{limitOrderId}")

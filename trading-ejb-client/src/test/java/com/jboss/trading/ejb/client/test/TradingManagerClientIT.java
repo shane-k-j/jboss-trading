@@ -1,13 +1,13 @@
-package com.jboss.trading.rmi.client.test;
+package com.jboss.trading.ejb.client.test;
 
-import com.jboss.trading.api.TradeManager;
+import com.jboss.trading.api.TradingManager;
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
 import com.jboss.trading.api.exception.MarketOrderNotFoundException;
 import com.jboss.trading.api.exception.PlaceOrderException;
 import com.jboss.trading.api.model.LimitOrder;
 import com.jboss.trading.api.model.MarketOrder;
 import com.jboss.trading.api.model.TransactionType;
-import com.jboss.trading.rmi.client.TradeManagerClient;
+import com.jboss.trading.ejb.client.TradingManagerClient;
 import com.jboss.trading.test.TestConfig;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -16,17 +16,17 @@ import org.junit.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TradeManagerClientIT {
+public class TradingManagerClientIT {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TradeManagerClientIT.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TradingManagerClientIT.class);
     
     private TestConfig testConfig;
     
     private ClientTestConfig clientTestConfig;
     
-    private TradeManager tradeManager;
+    private TradingManager tradingManager;
 
-    public TradeManagerClientIT() {
+    public TradingManagerClientIT() {
 
         testConfig = TestConfig.getInstance();
 
@@ -36,7 +36,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager = TradeManagerClient.getInstance(jndiName);
+        	tradingManager = TradingManagerClient.getInstance(jndiName);
         } 
         catch (NamingException ex) {
 
@@ -65,7 +65,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.placeLimitOrder(testConfig.getStockHolderId(),
+        	tradingManager.placeLimitOrder(testConfig.getStockHolderId(),
                     TransactionType.BUY, testConfig.getQuantity(),
                     testConfig.getStockSymbol(), testConfig.getPrice());
         } 
@@ -78,7 +78,7 @@ public class TradeManagerClientIT {
     @Test
     public void testPlaceBuyMarketOrder() throws Exception {
 
-        tradeManager.placeMarketOrder(testConfig.getStockHolderId(),
+    	tradingManager.placeMarketOrder(testConfig.getStockHolderId(),
                 TransactionType.BUY, testConfig.getQuantity(),
                 testConfig.getStockSymbol());
     }
@@ -88,7 +88,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.placeLimitOrder(testConfig.getStockHolderId(),
+        	tradingManager.placeLimitOrder(testConfig.getStockHolderId(),
                     TransactionType.SELL, testConfig.getQuantity(),
                     testConfig.getStockSymbol(), testConfig.getPrice());
         } 
@@ -101,7 +101,7 @@ public class TradeManagerClientIT {
     @Test
     public void testPlaceSellMarketOrder() throws Exception {
 
-        tradeManager.placeMarketOrder(testConfig.getStockHolderId(),
+    	tradingManager.placeMarketOrder(testConfig.getStockHolderId(),
                 TransactionType.SELL, testConfig.getQuantity(),
                 testConfig.getStockSymbol());
     }
@@ -111,7 +111,7 @@ public class TradeManagerClientIT {
 
         AtomicInteger limitOrderIdCounter = testConfig.getLimitOrderIdCounter();
 
-        LimitOrder limitOrder = tradeManager.viewLimitOrder(limitOrderIdCounter.getAndIncrement());
+        LimitOrder limitOrder = tradingManager.viewLimitOrder(limitOrderIdCounter.getAndIncrement());
 
         Assert.assertNotNull(limitOrder);
     }
@@ -121,7 +121,7 @@ public class TradeManagerClientIT {
 
         AtomicInteger marketOrderIdCounter = testConfig.getMarketOrderIdCounter();
 
-        MarketOrder marketOrder = tradeManager.viewMarketOrder(marketOrderIdCounter.getAndIncrement());
+        MarketOrder marketOrder = tradingManager.viewMarketOrder(marketOrderIdCounter.getAndIncrement());
 
         Assert.assertNotNull(marketOrder);
     }
@@ -130,7 +130,7 @@ public class TradeManagerClientIT {
     public void testViewStockHolderLimitOrders() throws Exception {
 
         List<LimitOrder> limitOrders =
-                tradeManager.viewStockHolderLimitOrders(testConfig.getStockHolderId(), testConfig.getMaxLimitOrderResults());
+        		tradingManager.viewStockHolderLimitOrders(testConfig.getStockHolderId(), testConfig.getMaxLimitOrderResults());
 
         Assert.assertNotNull(limitOrders);
         Assert.assertFalse(limitOrders.isEmpty());
@@ -140,7 +140,7 @@ public class TradeManagerClientIT {
     public void testViewStockHolderMarketOrders() throws Exception {
 
         List<MarketOrder> marketOrders =
-                tradeManager.viewStockHolderMarketOrders(testConfig.getStockHolderId(), testConfig.getMaxMarketOrderResults());
+        		tradingManager.viewStockHolderMarketOrders(testConfig.getStockHolderId(), testConfig.getMaxMarketOrderResults());
 
         Assert.assertNotNull(marketOrders);
         Assert.assertFalse(marketOrders.isEmpty());
@@ -153,7 +153,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelLimitOrder(limitOrderIdCounter.decrementAndGet());
+        	tradingManager.cancelLimitOrder(limitOrderIdCounter.decrementAndGet());
         } 
         catch (LimitOrderNotFoundException ex) {
 
@@ -168,7 +168,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelMarketOrder(marketOrderIdCounter.decrementAndGet());
+        	tradingManager.cancelMarketOrder(marketOrderIdCounter.decrementAndGet());
         } 
         catch (MarketOrderNotFoundException ex) {
 
@@ -185,7 +185,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelLimitOrder(limitOrderId);
+        	tradingManager.cancelLimitOrder(limitOrderId);
 
             Assert.fail();
         } 
@@ -204,7 +204,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelMarketOrder(marketOrderId);
+        	tradingManager.cancelMarketOrder(marketOrderId);
 
             Assert.fail();
         } 

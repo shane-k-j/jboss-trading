@@ -1,51 +1,60 @@
-package com.jboss.trading.rest.client.test;
+package com.jboss.trading.services.test;
 
-import com.jboss.trading.api.TradeManager;
+import com.jboss.trading.api.TradingManager;
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
 import com.jboss.trading.api.exception.MarketOrderNotFoundException;
 import com.jboss.trading.api.exception.PlaceOrderException;
 import com.jboss.trading.api.model.LimitOrder;
 import com.jboss.trading.api.model.MarketOrder;
 import com.jboss.trading.api.model.TransactionType;
-import com.jboss.trading.rest.client.TradeManagerClient;
 import com.jboss.trading.test.TestConfig;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import org.junit.*;
+import javax.inject.Inject;
+import javax.inject.Named;
 
-public class TradeManagerClientIT {
+import org.jboss.arquillian.container.test.api.Deployment;
+import org.jboss.arquillian.junit.Arquillian;
+import org.jboss.shrinkwrap.api.ShrinkWrap;
+import org.jboss.shrinkwrap.api.spec.JavaArchive;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+
+@RunWith(Arquillian.class)
+public class TradingManagerLocalIT {
 
     private TestConfig testConfig;
     
-    private ClientTestConfig clientTestConfig;
-    
-    private TradeManager tradeManager;
+    @Inject 
+    @Named("TradingManagerBean")
+    TradingManager tradingManager;
 
-    public TradeManagerClientIT() {
+    public TradingManagerLocalIT() {
 
         testConfig = TestConfig.getInstance();
-
-        clientTestConfig = ClientTestConfig.getInstance();
-
-        String baseUrl = clientTestConfig.getBaseUrl();
-
-        tradeManager = TradeManagerClient.getInstance(baseUrl);
     }
 
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
+    @Deployment
+    public static JavaArchive createTestArchive() {
 
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
+        return ShrinkWrap.create(
+                JavaArchive.class, "trading-services.jar")
+                .addPackage("com.jboss.trading.api")
+                .addPackage("com.jboss.trading.api.exception")
+                .addPackage("com.jboss.trading.api.model")
+                .addPackage("com.jboss.trading.services")
+                .addPackage("com.jboss.trading.services.persistence")
+                .addPackage("com.jboss.trading.services.persistence.factory")
+                .addPackage("com.jboss.trading.services.util")
+                .addPackage("com.jboss.trading.test")
+                .addPackage("org.slf4j.impl")
+                .addAsResource("META-INF/beans.xml")
+                .addAsResource("META-INF/jboss-deployment-structure.xml")
+                .addAsResource("META-INF/persistence.xml")
+                .addAsResource("META-INF/trading-jms.xml")
+                .addAsResource("import.sql")
+                .addAsResource("test.properties");
     }
 
     @Test
@@ -53,7 +62,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.placeLimitOrder(testConfig.getStockHolderId(),
+        	tradingManager.placeLimitOrder(testConfig.getStockHolderId(),
                     TransactionType.BUY, testConfig.getQuantity(),
                     testConfig.getStockSymbol(), testConfig.getPrice());
         } 
@@ -66,7 +75,7 @@ public class TradeManagerClientIT {
     @Test
     public void testPlaceBuyMarketOrder() throws Exception {
 
-        tradeManager.placeMarketOrder(testConfig.getStockHolderId(),
+    	tradingManager.placeMarketOrder(testConfig.getStockHolderId(),
                 TransactionType.BUY, testConfig.getQuantity(),
                 testConfig.getStockSymbol());
     }
@@ -76,7 +85,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.placeLimitOrder(testConfig.getStockHolderId(),
+        	tradingManager.placeLimitOrder(testConfig.getStockHolderId(),
                     TransactionType.SELL, testConfig.getQuantity(),
                     testConfig.getStockSymbol(), testConfig.getPrice());
         } 
@@ -89,7 +98,7 @@ public class TradeManagerClientIT {
     @Test
     public void testPlaceSellMarketOrder() throws Exception {
 
-        tradeManager.placeMarketOrder(testConfig.getStockHolderId(),
+    	tradingManager.placeMarketOrder(testConfig.getStockHolderId(),
                 TransactionType.SELL, testConfig.getQuantity(),
                 testConfig.getStockSymbol());
     }
@@ -99,7 +108,7 @@ public class TradeManagerClientIT {
 
         AtomicInteger limitOrderIdCounter = testConfig.getLimitOrderIdCounter();
 
-        LimitOrder limitOrder = tradeManager.viewLimitOrder(limitOrderIdCounter.getAndIncrement());
+        LimitOrder limitOrder = tradingManager.viewLimitOrder(limitOrderIdCounter.getAndIncrement());
 
         Assert.assertNotNull(limitOrder);
     }
@@ -109,7 +118,7 @@ public class TradeManagerClientIT {
 
         AtomicInteger marketOrderIdCounter = testConfig.getMarketOrderIdCounter();
 
-        MarketOrder marketOrder = tradeManager.viewMarketOrder(marketOrderIdCounter.getAndIncrement());
+        MarketOrder marketOrder = tradingManager.viewMarketOrder(marketOrderIdCounter.getAndIncrement());
 
         Assert.assertNotNull(marketOrder);
     }
@@ -118,7 +127,7 @@ public class TradeManagerClientIT {
     public void testViewStockHolderLimitOrders() throws Exception {
 
         List<LimitOrder> limitOrders =
-                tradeManager.viewStockHolderLimitOrders(testConfig.getStockHolderId(), testConfig.getMaxLimitOrderResults());
+        		tradingManager.viewStockHolderLimitOrders(testConfig.getStockHolderId(), testConfig.getMaxLimitOrderResults());
 
         Assert.assertNotNull(limitOrders);
         Assert.assertFalse(limitOrders.isEmpty());
@@ -128,7 +137,7 @@ public class TradeManagerClientIT {
     public void testViewStockHolderMarketOrders() throws Exception {
 
         List<MarketOrder> marketOrders =
-                tradeManager.viewStockHolderMarketOrders(testConfig.getStockHolderId(), testConfig.getMaxMarketOrderResults());
+        		tradingManager.viewStockHolderMarketOrders(testConfig.getStockHolderId(), testConfig.getMaxMarketOrderResults());
 
         Assert.assertNotNull(marketOrders);
         Assert.assertFalse(marketOrders.isEmpty());
@@ -141,7 +150,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelLimitOrder(limitOrderIdCounter.decrementAndGet());
+        	tradingManager.cancelLimitOrder(limitOrderIdCounter.decrementAndGet());
         } 
         catch (LimitOrderNotFoundException ex) {
 
@@ -156,7 +165,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelMarketOrder(marketOrderIdCounter.decrementAndGet());
+        	tradingManager.cancelMarketOrder(marketOrderIdCounter.decrementAndGet());
         } 
         catch (MarketOrderNotFoundException ex) {
 
@@ -173,7 +182,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelLimitOrder(limitOrderId);
+        	tradingManager.cancelLimitOrder(limitOrderId);
 
             Assert.fail();
         } 
@@ -192,7 +201,7 @@ public class TradeManagerClientIT {
 
         try {
 
-            tradeManager.cancelMarketOrder(marketOrderId);
+        	tradingManager.cancelMarketOrder(marketOrderId);
 
             Assert.fail();
         } 

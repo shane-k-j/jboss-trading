@@ -1,4 +1,4 @@
-package com.jboss.trading.ws;
+package com.jboss.trading.ejb.client;
 
 import com.jboss.trading.api.TradingManager;
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
@@ -7,30 +7,59 @@ import com.jboss.trading.api.exception.PlaceOrderException;
 import com.jboss.trading.api.model.LimitOrder;
 import com.jboss.trading.api.model.MarketOrder;
 import com.jboss.trading.api.model.TransactionType;
-import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Named;
-import javax.jws.WebService;
 
-@WebService
-public class TradingServices implements TradingManager {
+import java.util.List;
+import java.util.Properties;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class TradingManagerClient implements TradingManager {
+
+    private static final String PROP_PKGS_VALUE = 
+            "org.jboss.ejb.client.naming";
     
-    @Inject 
-    @Named("TradingManagerBean")
-    TradingManager tradingManager;
-    
-    public void cancelLimitOrder(Integer limitOrderId)
+    private TradingManager tradingManager;
+
+    public TradingManagerClient(TradingManager tradingManager) {
+
+        this.tradingManager = tradingManager;
+    }
+
+    public static TradingManagerClient getInstance(String jndiName) 
+            throws NamingException {
+
+        Properties properties = new Properties();
+
+        properties.put(Context.URL_PKG_PREFIXES, PROP_PKGS_VALUE);
+
+        InitialContext ctx = new InitialContext(properties);
+
+        TradingManager tradingManager = 
+                (TradingManager) ctx.lookup(jndiName);
+
+        TradingManagerClient tradingManagerClient = 
+                new TradingManagerClient(tradingManager);
+
+        return tradingManagerClient;
+    }
+
+    @Override
+    public void cancelLimitOrder(Integer limitOrderId) 
             throws LimitOrderNotFoundException {
 
     	tradingManager.cancelLimitOrder(limitOrderId);
     }
 
-    public void cancelMarketOrder(Integer marketOrderId)
+    @Override
+    public void cancelMarketOrder(Integer marketOrderId) 
             throws MarketOrderNotFoundException {
 
     	tradingManager.cancelMarketOrder(marketOrderId);
     }
 
+    @Override
     public void placeLimitOrder(
             Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol, Float price) 
@@ -41,34 +70,38 @@ public class TradingServices implements TradingManager {
                 stockSymbol, price);
     }
 
+    @Override
     public void placeMarketOrder(
             Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol) {
 
     	tradingManager.placeMarketOrder(
-                stockHolderId, transactionType, quantity,
-                stockSymbol);
+                stockHolderId, transactionType, quantity, stockSymbol);
     }
 
-    public LimitOrder viewLimitOrder(Integer limitOrderId)
+    @Override
+    public LimitOrder viewLimitOrder(Integer limitOrderId) 
             throws LimitOrderNotFoundException {
 
         return tradingManager.viewLimitOrder(limitOrderId);
     }
 
-    public MarketOrder viewMarketOrder(Integer marketOrderId)
+    @Override
+    public MarketOrder viewMarketOrder(Integer marketOrderId) 
             throws MarketOrderNotFoundException {
 
         return tradingManager.viewMarketOrder(marketOrderId);
     }
 
+    @Override
     public List<LimitOrder> viewStockHolderLimitOrders(
             Integer stockHolderId, Integer numberLimitOrders) {
-        
+
         return tradingManager.viewStockHolderLimitOrders(
                 stockHolderId, numberLimitOrders);
     }
 
+    @Override
     public List<MarketOrder> viewStockHolderMarketOrders(
             Integer stockHolderId, Integer numberMarketOrders) {
 

@@ -27,18 +27,16 @@
             <version>${project.version}</version>
             <scope>provided</scope>
         </dependency>
-        <!-- CDI -->
+        <!-- javax.enterprise.inject -->
         <dependency>
             <groupId>javax.enterprise</groupId>
             <artifactId>cdi-api</artifactId>
-            <version>1.0-SP4</version>
             <scope>provided</scope>
         </dependency>
-        <!-- JAX-RS -->
+        <!-- javax.ws.rs -->
         <dependency>
             <groupId>org.jboss.spec.javax.ws.rs</groupId>
             <artifactId>jboss-jaxrs-api_1.1_spec</artifactId>
-            <version>1.0.1.Final</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>

@@ -12,20 +12,25 @@
     <name>JBoss Trading Parent</name>
 
     <properties>
-        <arquillian-core.version>1.0.0.Final</arquillian-core.version>
-        <arquillian-jbossas.version>1.0.0.CR3</arquillian-jbossas.version>
+        <arquillian.version>1.0.0.Final</arquillian.version>
+        <jboss-as-arq-container.version>7.1.1.Final</jboss-as-arq-container.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <cxf.version>2.5.1</cxf.version>
-        <hibernate-annotations>3.4.0.GA</hibernate-annotations>
-        <jboss-as-client.version>5.1.0.GA</jboss-as-client.version>
-        <jboss-as-profileservice-client.version>6.0.0.Final</jboss-as-profileservice-client.version>
-        <jboss-ejb-api.version>3.0.0.GA</jboss-ejb-api.version>
-        <jboss-ejb3-ext-api.version>1.0.0</jboss-ejb3-ext-api.version>
-        <jboss-jms-api.version>1.1.0.GA</jboss-jms-api.version>
         <resteasy.version>2.3.3.Final</resteasy.version>
-        <scannotation.version>1.0.2</scannotation.version>  
         <slf4j.version>1.5.8</slf4j.version>      
     </properties>
+    
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.jboss.spec</groupId>
+                <artifactId>jboss-javaee-6.0</artifactId>
+                <version>3.0.0.Final</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     
     <dependencies>
         <!-- logging api -->

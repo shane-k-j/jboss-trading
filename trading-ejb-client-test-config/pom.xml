@@ -19,7 +19,7 @@
     <properties>
         <host>localhost</host>
         <port>4447</port>
-        <jndi.name>ejb:trading-app/trading-beans//TradeManagerBean!com.jboss.trading.services.TradeManagerRemote</jndi.name>
+        <jndi.name>ejb:trading-app/trading-beans//TradingManagerBean!com.jboss.trading.services.TradingManagerRemote</jndi.name>
     </properties>
     
     <build>

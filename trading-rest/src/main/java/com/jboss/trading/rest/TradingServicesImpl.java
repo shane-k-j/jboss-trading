@@ -1,6 +1,6 @@
 package com.jboss.trading.rest;
 
-import com.jboss.trading.api.TradeManager;
+import com.jboss.trading.api.TradingManager;
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
 import com.jboss.trading.api.exception.MarketOrderNotFoundException;
 import com.jboss.trading.api.exception.PlaceOrderException;
@@ -14,27 +14,27 @@ import javax.inject.Named;
 public class TradingServicesImpl implements TradingServices {
     
     @Inject 
-    @Named("TradeManagerBean")
-    TradeManager tradeManager;
+    @Named("TradingManagerBean")
+    TradingManager tradingManager;
     
     public void cancelLimitOrder(Integer limitOrderId)
             throws LimitOrderNotFoundException {
 
-        tradeManager.cancelLimitOrder(limitOrderId);
+    	tradingManager.cancelLimitOrder(limitOrderId);
     }
 
     public void cancelMarketOrder(Integer marketOrderId)
             throws MarketOrderNotFoundException {
 
-        tradeManager.cancelMarketOrder(marketOrderId);
+    	tradingManager.cancelMarketOrder(marketOrderId);
     }
 
     public void placeLimitOrder(
-    		Integer stockHolderId, TransactionType transactionType,
+            Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol, Float price) 
             throws PlaceOrderException {
 
-        tradeManager.placeLimitOrder(
+    	tradingManager.placeLimitOrder(
                 stockHolderId, transactionType, quantity, 
                 stockSymbol, price);
     }
@@ -43,7 +43,7 @@ public class TradingServicesImpl implements TradingServices {
             Integer stockHolderId, TransactionType transactionType,
             Integer quantity, String stockSymbol) {
 
-        tradeManager.placeMarketOrder(
+    	tradingManager.placeMarketOrder(
                 stockHolderId, transactionType, quantity,
                 stockSymbol);
     }
@@ -51,26 +51,26 @@ public class TradingServicesImpl implements TradingServices {
     public LimitOrder viewLimitOrder(Integer limitOrderId)
             throws LimitOrderNotFoundException {
 
-        return tradeManager.viewLimitOrder(limitOrderId);
+        return tradingManager.viewLimitOrder(limitOrderId);
     }
 
     public MarketOrder viewMarketOrder(Integer marketOrderId)
             throws MarketOrderNotFoundException {
 
-        return tradeManager.viewMarketOrder(marketOrderId);
+        return tradingManager.viewMarketOrder(marketOrderId);
     }
 
     public List<LimitOrder> viewStockHolderLimitOrders(
             Integer stockHolderId, Integer numberLimitOrders) {
         
-        return tradeManager.viewStockHolderLimitOrders(
+        return tradingManager.viewStockHolderLimitOrders(
                 stockHolderId, numberLimitOrders);
     }
 
     public List<MarketOrder> viewStockHolderMarketOrders(
             Integer stockHolderId, Integer numberMarketOrders) {
 
-        return tradeManager.viewStockHolderMarketOrders(
+        return tradingManager.viewStockHolderMarketOrders(
                 stockHolderId, numberMarketOrders);
     }
 }
