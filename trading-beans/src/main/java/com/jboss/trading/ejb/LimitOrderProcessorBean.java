@@ -1,6 +1,7 @@
-package com.jboss.trading.services;
+package com.jboss.trading.ejb;
 
-import com.jboss.trading.services.persistence.LimitOrderEntity;
+import com.jboss.trading.ejb.persistence.LimitOrderEntity;
+
 import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 import javax.ejb.TransactionAttribute;

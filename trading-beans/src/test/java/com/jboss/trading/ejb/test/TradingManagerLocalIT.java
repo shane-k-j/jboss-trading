@@ -1,4 +1,4 @@
-package com.jboss.trading.services.test;
+package com.jboss.trading.ejb.test;
 
 import com.jboss.trading.api.TradingManager;
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
@@ -43,10 +43,10 @@ public class TradingManagerLocalIT {
                 .addPackage("com.jboss.trading.api")
                 .addPackage("com.jboss.trading.api.exception")
                 .addPackage("com.jboss.trading.api.model")
-                .addPackage("com.jboss.trading.services")
-                .addPackage("com.jboss.trading.services.persistence")
-                .addPackage("com.jboss.trading.services.persistence.factory")
-                .addPackage("com.jboss.trading.services.util")
+                .addPackage("com.jboss.trading.ejb")
+                .addPackage("com.jboss.trading.ejb.persistence")
+                .addPackage("com.jboss.trading.ejb.persistence.factory")
+                .addPackage("com.jboss.trading.ejb.util")
                 .addPackage("com.jboss.trading.test")
                 .addAsResource("META-INF/beans.xml")
                 .addAsResource("META-INF/jboss-deployment-structure.xml")

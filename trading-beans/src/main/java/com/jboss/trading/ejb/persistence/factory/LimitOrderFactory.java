@@ -1,7 +1,8 @@
-package com.jboss.trading.services.persistence.factory;
+package com.jboss.trading.ejb.persistence.factory;
 
 import com.jboss.trading.api.model.LimitOrder;
-import com.jboss.trading.services.persistence.LimitOrderEntity;
+import com.jboss.trading.ejb.persistence.LimitOrderEntity;
+
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;

@@ -7,10 +7,10 @@
                 http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
     <persistence-unit name="trading" transaction-type="JTA">
         <jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
-        <class>com.jboss.trading.services.persistence.LimitOrderEntity</class>
-        <class>com.jboss.trading.services.persistence.MarketOrderEntity</class>
-        <class>com.jboss.trading.services.persistence.StockEntity</class>
-        <class>com.jboss.trading.services.persistence.StockHolderEntity</class>
+        <class>com.jboss.trading.ejb.persistence.LimitOrderEntity</class>
+        <class>com.jboss.trading.ejb.persistence.MarketOrderEntity</class>
+        <class>com.jboss.trading.ejb.persistence.StockEntity</class>
+        <class>com.jboss.trading.ejb.persistence.StockHolderEntity</class>
         <properties>
             <property name="hibernate.hbm2ddl.auto" 
                       value="${hibernate.hbm2ddl.auto}" />

@@ -1,4 +1,4 @@
-package com.jboss.trading.services.persistence;
+package com.jboss.trading.ejb.persistence;
 
 import com.jboss.trading.api.model.OrderStatus;
 import com.jboss.trading.api.model.TransactionType;
@@ -7,15 +7,15 @@ import java.util.Date;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tbl_limit_orders")
+@Table(name = "tbl_market_orders")
 @Cacheable
-public class LimitOrderEntity implements Serializable {
+public class MarketOrderEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, 
-            generator = "sequence_limit_orders")
-    @SequenceGenerator(name = "sequence_limit_orders", 
-            sequenceName = "sequence_limit_orders")
+            generator = "sequence_market_orders")
+    @SequenceGenerator(name = "sequence_market_orders", 
+            sequenceName = "sequence_market_orders")
     private Integer id;
     
     @Column(name = "fk_stock_holder_id")
@@ -29,8 +29,6 @@ public class LimitOrderEntity implements Serializable {
     
     @Enumerated(EnumType.STRING)
     private OrderStatus orderStatus;
-    
-    private Float price;
     
     private Integer quantity;
     
@@ -68,16 +66,6 @@ public class LimitOrderEntity implements Serializable {
     public void setOrderStatus(OrderStatus orderStatus) {
         
         this.orderStatus = orderStatus;
-    }
-
-    public Float getPrice() {
-        
-        return price;
-    }
-
-    public void setPrice(Float price) {
-        
-        this.price = price;
     }
 
     public Integer getQuantity() {

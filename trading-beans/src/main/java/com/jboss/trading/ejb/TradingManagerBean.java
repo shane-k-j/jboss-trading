@@ -1,4 +1,4 @@
-package com.jboss.trading.services;
+package com.jboss.trading.ejb;
 
 import com.jboss.trading.api.exception.LimitOrderNotFoundException;
 import com.jboss.trading.api.exception.MarketOrderNotFoundException;
@@ -7,10 +7,11 @@ import com.jboss.trading.api.model.LimitOrder;
 import com.jboss.trading.api.model.MarketOrder;
 import com.jboss.trading.api.model.OrderStatus;
 import com.jboss.trading.api.model.TransactionType;
-import com.jboss.trading.services.persistence.LimitOrderEntity;
-import com.jboss.trading.services.persistence.MarketOrderEntity;
-import com.jboss.trading.services.persistence.factory.LimitOrderFactory;
-import com.jboss.trading.services.persistence.factory.MarketOrderFactory;
+import com.jboss.trading.ejb.persistence.LimitOrderEntity;
+import com.jboss.trading.ejb.persistence.MarketOrderEntity;
+import com.jboss.trading.ejb.persistence.factory.LimitOrderFactory;
+import com.jboss.trading.ejb.persistence.factory.MarketOrderFactory;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;

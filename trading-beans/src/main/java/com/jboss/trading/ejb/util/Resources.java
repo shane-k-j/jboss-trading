@@ -1,7 +1,8 @@
-package com.jboss.trading.services.util;
+package com.jboss.trading.ejb.util;
 
 import com.jboss.trading.api.TradingManager;
-import com.jboss.trading.services.TradingManagerLocal;
+import com.jboss.trading.ejb.TradingManagerLocal;
+
 import javax.ejb.EJB;
 import javax.enterprise.inject.Produces;
 import javax.inject.Named;

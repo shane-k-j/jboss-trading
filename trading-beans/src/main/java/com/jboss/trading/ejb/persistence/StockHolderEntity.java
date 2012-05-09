@@ -1,4 +1,4 @@
-package com.jboss.trading.services.persistence;
+package com.jboss.trading.ejb.persistence;
 
 import java.io.Serializable;
 import javax.persistence.*;
