@@ -16,8 +16,8 @@
         <jboss-as-arq-container.version>7.1.1.Final</jboss-as-arq-container.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <cxf.version>2.5.1</cxf.version>
-        <resteasy.version>2.3.3.Final</resteasy.version>
-        <slf4j.version>1.5.8</slf4j.version>      
+        <resteasy.version>2.3.1.GA</resteasy.version>
+        <slf4j.version>1.6.1</slf4j.version>      
     </properties>
     
     <dependencyManagement>
@@ -72,19 +72,4 @@
             </plugin>
         </plugins>
     </build>
-    
-    <repositories>
-        <repository>
-            <id>jboss</id>
-            <name>JBoss Public Repository</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>jboss</id>
-            <name>JBoss Public Repository</name>
-            <url>http://repository.jboss.org/nexus/content/groups/public-jboss/</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
