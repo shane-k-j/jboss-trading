@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jmeterTestPlan version="1.2" properties="2.1">
+<jmeterTestPlan version="1.2" properties="2.2">
   <hashTree>
     <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="JBoss Trading Client Test Plan" enabled="true">
       <stringProp name="TestPlan.comments"></stringProp>
@@ -58,8 +58,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Limit Order (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Limit Order (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testPlaceBuyLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -92,7 +92,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Limit Order (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testPlaceBuyLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -125,7 +125,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Limit Order (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testPlaceBuyLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -157,8 +157,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Market Order (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Market Order (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testPlaceBuyMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -191,7 +191,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Market Order (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testPlaceBuyMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -224,7 +224,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Place Buy Market Order (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testPlaceBuyMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -256,8 +256,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Limit Order (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Limit Order (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -290,7 +290,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Limit Order (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -323,7 +323,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Limit Order (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -355,8 +355,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Market Order (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Market Order (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -389,7 +389,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Market Order (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -422,7 +422,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Market Order (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -454,8 +454,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Limit Orders (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Limit Orders (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewStockHolderLimitOrders</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -488,7 +488,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Limit Orders (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewStockHolderLimitOrders</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -521,7 +521,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Limit Orders (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewStockHolderLimitOrders</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -553,8 +553,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Market Orders (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Market Orders (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewStockHolderMarketOrders</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -587,7 +587,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Market Orders (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewStockHolderMarketOrders</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -620,7 +620,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test View Stock Holder Market Orders (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testViewStockHolderMarketOrders</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -652,8 +652,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testCancelLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -686,7 +686,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testCancelLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -719,7 +719,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testCancelLimitOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -751,8 +751,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testCancelMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -785,7 +785,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testCancelMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -818,7 +818,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testCancelMarketOrder</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -850,8 +850,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order Failure (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order Failure (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testcancelLimitOrderFailure</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -884,7 +884,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order Failure (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testcancelLimitOrderFailure</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -917,7 +917,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Limit Order Failure (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testcancelLimitOrderFailure</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -949,8 +949,8 @@
         <stringProp name="ThreadGroup.delay"></stringProp>
       </ThreadGroup>
       <hashTree>
-        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order Failure (RMI)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rmi.client.test.TradeManagerClientIT</stringProp>
+        <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order Failure (EJB)" enabled="true">
+          <stringProp name="junitSampler.classname">com.jboss.trading.ejb.client.test.TradingManagerClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testcancelMarketOrderFailure</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -983,7 +983,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order Failure (WS)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.ws.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testcancelMarketOrderFailure</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>
@@ -1016,7 +1016,7 @@
       </ThreadGroup>
       <hashTree>
         <JUnitSampler guiclass="JUnitTestSamplerGui" testclass="JUnitSampler" testname="Test Cancel Market Order Failure (REST)" enabled="true">
-          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradeManagerClientIT</stringProp>
+          <stringProp name="junitSampler.classname">com.jboss.trading.rest.client.test.TradingServicesClientIT</stringProp>
           <stringProp name="junitsampler.constructorstring"></stringProp>
           <stringProp name="junitsampler.method">testcancelMarketOrderFailure</stringProp>
           <stringProp name="junitsampler.pkg.filter"></stringProp>

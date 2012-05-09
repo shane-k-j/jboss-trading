@@ -17,6 +17,7 @@
     <name>JBoss Trading Client Test Distribution</name>
 
     <dependencies>
+        <!--  ejb client & tests -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-ejb-client</artifactId>
@@ -28,6 +29,7 @@
             <version>${project.version}</version>
             <type>test-jar</type>
         </dependency>
+        <!--  rest client & tests -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-rest-client</artifactId>
@@ -39,6 +41,7 @@
             <version>${project.version}</version>
             <type>test-jar</type>
         </dependency>
+        <!--  ws client & tests -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-ws-client</artifactId>
@@ -49,25 +52,23 @@
             <artifactId>trading-ws-client</artifactId>
             <version>${project.version}</version>
             <type>test-jar</type>
+        </dependency>
+        <!-- test, thus not included -->
+        <!-- from ejb, rest, & ws clients -->
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-test</artifactId>
+            <version>${project.version}</version>
         </dependency>
         <!-- provided, thus not transitive -->
-        <!-- from trading-parent -->
-        <!-- logging api -->
+        <!-- from parent -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
         </dependency>
         <!-- test, thus not included -->
-        <!-- from trading-ejb/rest/ws-client -->
-        <dependency>
-            <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-test</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <!-- test, thus not included -->
-        <!-- from trading-ejb/ws-client -->
-        <!-- logging impl -->
+        <!-- from ejb, rest, & ws clients -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>

@@ -246,6 +246,7 @@
                             <password>password</password>
                             <targetDir>${project.build.directory}/dependency/</targetDir>
                             <filename>trading-app.ear</filename>
+                            <packaging>ear</packaging>
                         </configuration>
                         <executions>
                             <execution>

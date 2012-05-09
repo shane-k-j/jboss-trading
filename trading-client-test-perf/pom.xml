@@ -17,17 +17,7 @@
     <name>JBoss Trading Client Test Perf</name>
     
     <dependencies>
-        <dependency>
-            <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-rest-client</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.jboss.trading</groupId>
-            <artifactId>trading-rest-client</artifactId>
-            <version>${project.version}</version>
-            <type>test-jar</type>
-        </dependency>
+        <!--  ejb client & tests -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-ejb-client</artifactId>
@@ -39,6 +29,19 @@
             <version>${project.version}</version>
             <type>test-jar</type>
         </dependency>
+        <!--  rest client & tests -->
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-rest-client</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.jboss.trading</groupId>
+            <artifactId>trading-rest-client</artifactId>
+            <version>${project.version}</version>
+            <type>test-jar</type>
+        </dependency>
+        <!--  ws client & tests -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-ws-client</artifactId>
@@ -51,7 +54,7 @@
             <type>test-jar</type>
         </dependency>
         <!-- test, thus not included -->
-        <!-- from trading-ejb/rest/ws-client -->
+        <!-- from ejb, rest, & ws clients -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-test</artifactId>
@@ -63,31 +66,32 @@
             <version>${project.version}</version>
         </dependency>
         <!-- test, thus not included -->
-        <!-- from trading-ejb-client -->
+        <!-- from ejb client -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-ejb-client-test-config</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- test, thus not included -->
-        <!-- from trading-rest-client -->
-        <!-- logging impl -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-simple</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
+        <!-- from rest client -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-rest-client-test-config</artifactId>
             <version>${project.version}</version>
         </dependency>
         <!-- test, thus not included -->
-        <!-- from trading-ws-client -->
+        <!-- from ws client -->
         <dependency>
             <groupId>com.jboss.trading</groupId>
             <artifactId>trading-ws-client-test-config</artifactId>
             <version>${project.version}</version>
+        </dependency>
+        <!-- test, thus not included -->
+        <!-- from ejb, rest, & ws clients -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
     </dependencies>
     
@@ -134,6 +138,7 @@
                             <password>password</password>
                             <targetDir>${project.build.directory}/dependency/</targetDir>
                             <filename>trading-app.ear</filename>
+                            <packaging>ear</packaging>
                         </configuration>
                         <executions>
                             <execution>
