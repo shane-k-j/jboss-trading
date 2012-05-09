@@ -48,7 +48,6 @@ public class TradingManagerLocalIT {
                 .addPackage("com.jboss.trading.services.persistence.factory")
                 .addPackage("com.jboss.trading.services.util")
                 .addPackage("com.jboss.trading.test")
-                .addPackage("org.slf4j.impl")
                 .addAsResource("META-INF/beans.xml")
                 .addAsResource("META-INF/jboss-deployment-structure.xml")
                 .addAsResource("META-INF/persistence.xml")
