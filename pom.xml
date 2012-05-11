@@ -139,14 +139,6 @@
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-checkstyle-plugin</artifactId>
                             <version>2.9.1</version>
-                            <reportSets>
-                                <reportSet>
-                                    <id>non-aggregate</id>
-                                    <reports>
-                                        <report>checkstyle</report>
-                                    </reports>
-                                </reportSet>
-                            </reportSets>
                         </plugin>
                         <!-- 
                         <plugin>
@@ -161,25 +153,26 @@
                             <version>2.7.1</version>
                             <configuration>
                                 <targetJdk>1.6</targetJdk>
-                                    <rulesets>
-                                        <ruleset>/rulesets/basic.xml</ruleset>
-                                        <ruleset>/rulesets/braces.xml</ruleset>
-                                        <ruleset>/rulesets/codesize.xml</ruleset>
-                                        <ruleset>/rulesets/controversial.xml</ruleset>
-                                        <ruleset>/rulesets/coupling.xml</ruleset>
-                                        <ruleset>/rulesets/design.xml</ruleset>
-                                        <ruleset>/rulesets/favorites.xml</ruleset>
-                                        <ruleset>/rulesets/imports.xml</ruleset>
-                                        <ruleset>/rulesets/javabeans.xml</ruleset>
-                                        <ruleset>/rulesets/junit.xml</ruleset>
-                                        <ruleset>/rulesets/logging-java.xml</ruleset>
-                                        <ruleset>/rulesets/naming.xml</ruleset>
-                                        <ruleset>/rulesets/optimizations.xml</ruleset>
-                                        <ruleset>/rulesets/strictexception.xml</ruleset>
-                                        <ruleset>/rulesets/strings.xml</ruleset>
-                                        <ruleset>/rulesets/typeresolution.xml</ruleset>
-                                        <ruleset>/rulesets/unusedcode.xml</ruleset>
-                                    </rulesets>
+                                <aggregate>true</aggregate>
+                                <rulesets>
+                                    <ruleset>/rulesets/basic.xml</ruleset>
+                                    <ruleset>/rulesets/braces.xml</ruleset>
+                                    <ruleset>/rulesets/codesize.xml</ruleset>
+                                    <ruleset>/rulesets/controversial.xml</ruleset>
+                                    <ruleset>/rulesets/coupling.xml</ruleset>
+                                    <ruleset>/rulesets/design.xml</ruleset>
+                                    <ruleset>/rulesets/favorites.xml</ruleset>
+                                    <ruleset>/rulesets/imports.xml</ruleset>
+                                    <ruleset>/rulesets/javabeans.xml</ruleset>
+                                    <ruleset>/rulesets/junit.xml</ruleset>
+                                    <ruleset>/rulesets/logging-java.xml</ruleset>
+                                    <ruleset>/rulesets/naming.xml</ruleset>
+                                    <ruleset>/rulesets/optimizations.xml</ruleset>
+                                    <ruleset>/rulesets/strictexception.xml</ruleset>
+                                    <ruleset>/rulesets/strings.xml</ruleset>
+                                    <ruleset>/rulesets/typeresolution.xml</ruleset>
+                                    <ruleset>/rulesets/unusedcode.xml</ruleset>
+                                </rulesets>
                             </configuration>
                         </plugin>
                         <plugin>
