@@ -139,7 +139,7 @@
                 <version>1.0</version>
                 <executions>
                     <execution>
-                        <phase>post-site</phase>
+                        <phase>site</phase>
                         <goals>
                             <goal>transform</goal>
                         </goals>
