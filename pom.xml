@@ -13,8 +13,8 @@
     
     <distributionManagement>
         <site>
-            <id>localhost</id>
-            <url>http://localhost:8080/</url>
+            <id>jboss-trading</id>
+            <url></url>
         </site>
     </distributionManagement>
     
@@ -39,9 +39,9 @@
 
     <properties>
         <arquillian.version>1.0.0.Final</arquillian.version>
-        <jboss-as-arq-container.version>7.1.1.Final</jboss-as-arq-container.version>
         <commons-beanutils.version>1.8.3</commons-beanutils.version>
         <cxf.version>2.5.1</cxf.version>
+        <jboss-as-arq-container.version>7.1.1.Final</jboss-as-arq-container.version>
         <resteasy.version>2.3.1.GA</resteasy.version>
         <slf4j.version>1.6.1</slf4j.version>      
     </properties>

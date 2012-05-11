@@ -86,6 +86,13 @@
             <artifactId>trading-ws-client-test-config</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <!-- provide, thus not included -->
+        <!-- from parent -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
         <!-- test, thus not included -->
         <!-- from ejb, rest, & ws clients -->
         <dependency>
