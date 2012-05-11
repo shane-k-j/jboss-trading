@@ -188,7 +188,6 @@
                             <version>2.4.0</version>
                             <configuration>
                                 <xmlOutput>true</xmlOutput>
-                                <xmlOutputDirectory>target/site</xmlOutputDirectory>
                             </configuration>
                         </plugin>
                         <plugin>
