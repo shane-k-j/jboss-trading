@@ -86,7 +86,7 @@
             <artifactId>trading-ws-client-test-config</artifactId>
             <version>${project.version}</version>
         </dependency>
-        <!-- provide, thus not included -->
+        <!-- provided, thus not included -->
         <!-- from parent -->
         <dependency>
             <groupId>org.slf4j</groupId>
