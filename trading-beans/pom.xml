@@ -6,9 +6,9 @@
     
     <parent>
         <groupId>com.jboss.trading</groupId>
-        <artifactId>trading-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../trading-parent/pom.xml</relativePath>
+        <artifactId>jboss-trading</artifactId>
+        <version>2.1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     
     <artifactId>trading-beans</artifactId>
@@ -83,9 +83,19 @@
             <scope>test</scope>
         </dependency>
         <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.core</artifactId>
+            <version>0.5.7.201204190339</version>
+        </dependency>
+        <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jboss.arquillian.extension</groupId>
+            <artifactId>arquillian-jacoco</artifactId>
+            <version>1.0.0.Alpha3</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -122,6 +132,39 @@
                     <ejbVersion>3.0</ejbVersion>
                     <generateClient>true</generateClient>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>xml-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>transform</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <transformationSets>
+                        <transformationSet>
+                            <includes>
+                                <include>**/*.xml</include>
+                            </includes>
+                            <dir>target/site/jacoco</dir>
+                            <stylesheet>src/test/resources/jacoco_to_emma.xslt</stylesheet>
+                        </transformationSet>
+                    </transformationSets>
+                    <catalogs>
+                        <catalog>src/test/resources/catalog.xml</catalog>
+                    </catalogs>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>net.sf.saxon</groupId>
+                        <artifactId>saxon</artifactId>
+                        <version>8.7</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
@@ -170,6 +213,12 @@
                     </plugin>
                 </plugins>
             </build>
+        </profile>
+        <profile>
+            <id>localhost-remote-perf</id>
+            <properties>
+                 <hibernate.hbm2ddl.auto>create-drop</hibernate.hbm2ddl.auto>
+            </properties>
         </profile>
     </profiles>
 </project>
